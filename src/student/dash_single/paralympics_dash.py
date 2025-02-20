@@ -1,8 +1,10 @@
 from dash import Dash, html, dcc
+import dash
 import pathlib
 import pandas as pd
 import plotly.express as px
 import dash_bootstrap_components as dbc
+import sqlite3
 
 # Variable that defines the meta tag for the viewport
 meta_tags = [
@@ -238,9 +240,88 @@ def bar_gender(event_type):
     return fig
 
 
+def scatter_geo():
+    # create database connection
+    path = pathlib.Path(__file__).parent.parent.joinpath("data", "paralympics.db")
+    connection = sqlite3.connect(path)
+
+    # define the sql query
+    sql = '''
+    SELECT event.year, host.host, host.latitude, host.longitude FROM event
+    JOIN host_event ON event.event_id = host_event.event_id
+    JOIN host on host_event.host_id = host.host_id
+    '''
+        
+    # Use pandas read_sql to run a sql query and access the results as a DataFrame
+    df_locs = pd.read_sql(sql=sql, con=connection, index_col=None)
+        
+    # The lat and lon are stored as string but need to be floats for the scatter_geo
+    df_locs['longitude'] = df_locs['longitude'].astype(float)
+    df_locs['latitude'] = df_locs['latitude'].astype(float)
+        
+    # Adds a new column that concatenates the city and year e.g. Barcelona 2012
+    df_locs['name'] = df_locs['host'] + ' ' + df_locs['year'].astype(str)
+        
+    # Create the figure
+    fig = px.scatter_geo(df_locs,
+                             lat=df_locs.latitude,
+                             lon=df_locs.longitude,
+                             hover_name=df_locs.name,
+                             title="Where have the paralympics been held?",
+                             )
+    return fig
+
+def create_card(host_year):
+    """
+    Generate a card for the event specified by host city name and year.
+
+    Parameters:
+        host_year: str  String with the host city name followed by a space then the year
+
+    Returns:
+        card: dash boostrap components card for the event
+    """
+    # Slice the string to get the year and host as separate values.
+    # See https://www.w3schools.com/python/python_strings_slicing.asp
+    # The last 4 digits are the year
+    year = host_year[-4:]# add code in the brackets to get a slice of the string
+    # Drop the last 5 digits (a space followed by the year) to the host city 
+    host = host_year[:-5]# add code in the brackets to get a slice of the string
+    
+    # Read the data into a DataFrame from the SQLite database
+    path = pathlib.Path(__file__).parent.parent.joinpath("data", "paralympics.db")
+    conn = sqlite3.connect(path)
+    with conn:
+        conn.execute("PRAGMA foreign_keys = ON")
+        query = "SELECT * FROM event JOIN  host_event ON event.event_id = host_event.event_id JOIN host ON host_event.host_id = host.host_id WHERE event.year = ? AND host.host = ?;"
+        event_df = pd.read_sql_query(query, conn, params=[year, host])
+
+        # Variables for the card contents, the first is done for you as an example
+        logo_path = f'logos/{year}_{host}.jpg'
+        highlights = f'highlights/{year}_{host}.jpg'
+        participants = f'participants/{year}_{host}.jpg'
+        events = f' events/{year}_{host}.jpg'
+        countries = f'countries/{year}_{host}.jpg'
+
+        card = dbc.Card([
+            dbc.CardImg(src=dash.get_asset_url(logo_path), style={'max-width': '60px'}, top=True),
+               dbc.CardBody([
+                html.H4(host_year, 
+                        className="card-title1"),
+                html.P(highlights, className="card-text2", ),
+                html.P(participants, className="card-text3", ),
+                html.P(events, className="card-text4", ),
+                html.P(countries, className="card-text5", ),
+            ]),
+        ],
+            style={"width": "18rem"},
+        )
+        return card
+
 line_fig = line_chart("sports")
 bar_fig = bar_gender("summer")
-
+map = scatter_geo()
+card = create_card("Barcelona 1992")
 
 app.layout = dbc.Container([
     row_one,
@@ -248,8 +329,9 @@ app.layout = dbc.Container([
     row_three,
     row_four,
     dcc.Graph(id="line-chart", figure=line_fig),
-    dcc.Graph(id="bar-chart", figure=bar_fig)
-
+    dcc.Graph(id="bar-chart", figure=bar_fig),
+    dcc.Graph(id="geo", figure=map),
+    dbc.Col(children=[card], id='card', width=4)
 ])
 
 
