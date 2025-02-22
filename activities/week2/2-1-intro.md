@@ -45,9 +45,10 @@ The general approach to create and add a chart to a Dash application is:
 
 ## This week's activities
 
-This week's activities cover the data visualisations listed in the table below. The examples use 2 different ways to
-access the data. The purpose of this is to introduce different ways of accessing the data. For your coursework don't do
-this, pick one method to use.
+This week's activities cover the data visualisations listed in the table below.
+
+The examples use 2 different ways to access the data. The purpose of this is to introduce different ways of accessing
+the data. For your coursework don't do this, pick one method to access the data.
 
 | Activity                         | Chart type                                       | Data access method       | Chart library  |
 |:---------------------------------|:-------------------------------------------------|:-------------------------|:---------------|
@@ -60,11 +61,15 @@ this, pick one method to use.
 
 Check that the app as at the end of week 1 runs:
 
-1. `python src/student/dash-single/paralympics_dash.py`
+1. Open `src/student/dash_single/paralympics_dash.py` and run the app.
 2. Go to the URL that is shown in the terminal. By default, this is <http://127.0.0.1:8050>.
-3. Stop the app using `CTRL+C`
 
-If the app did not run, you may need to get the latest version from the tutorials' repository. Go to GitHub; update your
-fork; then in your IDE pull the changes from GitHub to your local repository.
+If you did not complete the activities in week 1, then you may need to copy and adapt the code from the tutor solution
+into the `paralympics_dash.py` file.
+
+Go to GitHub; update your fork; then in your IDE pull the changes from GitHub to your local repository. This will pull
+in any changes from the src/tutor source tree.
+
+A completed version of week 1 is in the `paralympics_dash_1.py` file.
 
 [Next activity](2-2-line-chart.md)

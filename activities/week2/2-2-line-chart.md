@@ -1,4 +1,4 @@
-# Activity 2.1 Line chart
+# 1. Line chart
 
 In this activity you will create a line chart using Plotly Express. The data will be read into a pandas DataFrame from a .csv
 file.
@@ -9,7 +9,7 @@ Add a [Plotly Express line chart](https://plotly.com/python-api-reference/genera
 displays for each paralympics the total number of events, competitors and sports. The data will be displayed over time,
 i.e. from 1960 through to 2022.
 
-The data is in `data/paralympic_events.csv`. The columns needed
+The data is in `data/paralympics.csv`. The columns needed
 are: `["type", "year", "host", "events", "sports", "participants", "countries"]`.
 
 You do not have to put the chart code in a function but doing so can make it easier when you later add callbacks (next

@@ -46,7 +46,6 @@ are alternatives to Bootstrap you can explore, try searching `alternatives to Bo
 
 - [Pure.css](https://purecss.io/start/)
 - [Materialize](https://materializecss.com/getting-started.html)
-- [ZURB foundation](https://foundation.zurb.com/)
 
 You can use a CDN (Content Distribution Network) version of Bootstrap, that is a version someone else hosts on their
 server infrastructure. Refer to
@@ -126,9 +125,9 @@ To use Bootstrap in a responsive way, the minimum you need is:
 ### Activity: Update the HTML template to display the index page responsively
 
 1. Open `index.html` in the `templates` folder.
-2. In the <head> section before the style sheet
+2. In the `<head>` section before the style sheet
    add: `<meta name="viewport" content="width=device-width, initial-scale=1">`
-3. In the <body> section add a <div> with a Bootstrap container class i.e. add `<div class='container'>` after `<body>`
+3. In the `<body>` section add a `<div>` with a Bootstrap container class i.e. add `<div class='container'>` after `<body>`
    and `</div>` just before `</body>`
 4. Add a large image within the `<div>` section
    using

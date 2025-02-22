@@ -17,11 +17,9 @@ allowing you to write Python code instead of SQL.
 It is referred to as an ORM, object relational mapper. It provides a "mapping" between Python classes and database
 tables.
 
-[SQLAlchemy](https://www.sqlalchemy.org) allows you to use the same code with a number of different databases, included
-SQLite.
+[SQLAlchemy](https://www.sqlalchemy.org) allows you to use the same code with different databases, including SQLite.
 
-[FlaskSQLAlchemy](https://flask-sqlalchemy.readthedocs.io/en/stable/) is an extension that supports working with
-SQLAlchemy in Flask apps. It provides extra features that make it easier to use SQLAlchemy in a Flask app.
+[FlaskSQLAlchemy](https://flask-sqlalchemy.readthedocs.io/en/stable/) is an extension that provides extra features that make it easier to use SQLAlchemy in a Flask app.
 
 Some of the syntax you will need is from Flask-SQLAlchemy, and some from SQLAlchemy. As a general rule, look at the
 Flask-SQLAlchemy documentation first, if what you want is not covered there then move to teh SQLAlchemy documentation.
@@ -32,11 +30,9 @@ will use the older style syntax, some of which is no longer supported or is depr
 still use in the current release, but it is scheduled to be removed in a future release at which point your code would
 no longer work.
 
-
-
 ## Using Flask-SQLAlchemy and SQLAlchemy in a Flask app
 
-Make sure you installed FlaskSQLAlchemy, e.g. `pip install flask_sqlalchemy`. When you install it, it will install the
+Make sure you installed FlaskSQLAlchemy, e.g. `pip install flask-sqlalchemy`. When you install it, it will install the
 required version of SQLAlchemy also.
 
 To use Flask-SQLAlchemy involves code in a number of areas of the Flask app.
@@ -46,7 +42,7 @@ To use Flask-SQLAlchemy involves code in a number of areas of the Flask app.
 - Create an instance of Flask-SQLAlchemy object
 - Configure it
 - Initialise it for your Flask app
-- Optionally, create the database table.
+- Optionally, create the database tables.
 - The object can then be used in the app when you want to interact with the database
 
 In a Flask app any interaction has to be within a defined context. Code that is run in a route has a context. Database

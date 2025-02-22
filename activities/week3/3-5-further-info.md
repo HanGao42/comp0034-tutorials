@@ -1,6 +1,7 @@
 # Further information on callbacks
 
 ## Dash documentation
+
 There are more types of callback interactions and examples in the Dash tutorial documentation:
 
 - [Basic callbacks documentation](https://dash.plotly.com/basic-callbacks).
@@ -10,9 +11,10 @@ There are more types of callback interactions and examples in the Dash tutorial 
 
 ## Other examples and tutorials
 
+- [CharmingData YouTube](https://www.youtube.com/watch?v=4gDwKYaA6ww) recommended video series (note: there have been
+  syntax changes, e.g. multi-page apps changed mid-2022, be careful if using code from early videos)
 - [Dash with sckit-learn models](https://plotly.com/blog/build-python-web-apps-for-scikit-learn-with-plotly-dash/) 2023
   Plotly Dash tutorial
-- [CharmingData YouTube](https://www.youtube.com/watch?v=4gDwKYaA6ww) series (note: 3 years old so some syntax will have changed)
 - [Tutorial to build a stock price tracker](https://www.statworx.com/en/content-hub/blog/how-to-build-a-dashboard-in-python-plotly-dash-step-by-step-tutorial/)
 - [Tutorial to build an app that analyses avocado prices (RealPython)](https://realpython.com/python-dash/)
 - [Example apps in Dash GitHub](https://github.com/plotly/dash-sample-apps)

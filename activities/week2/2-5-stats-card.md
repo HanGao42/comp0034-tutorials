@@ -19,7 +19,7 @@ The Card code currently looks like this:
 
 ```python
 dbc.Card([
-    dbc.CardImg(src=dash.get_asset_url("logos/2022_Beijing.png"), top=True),
+    dbc.CardImg(src=dash.get_asset_url("logos/2022_Beijing.jpg"), top=True),
     dbc.CardBody([
         html.H4("Beijing 2022", className="card-title"),
         html.P("Number of athletes: XX", className="card-text", ),

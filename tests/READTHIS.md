@@ -1,0 +1,1 @@
+Examples of tests for the Dash paralympics app are in a separate repository: https://github.com/nicholsons/comp0034-tutorial-apps
