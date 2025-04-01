@@ -213,3 +213,5 @@ def delete_response(response_id):
 Delete the quiz saved earlier.
 
 Review the `ON DELETE` constraints in the database schema. If you delete the quiz, what happens?
+
+[Next activity](7-8-flash-messages.md)

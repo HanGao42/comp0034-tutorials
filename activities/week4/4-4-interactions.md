@@ -1,4 +1,4 @@
-# Tests that involve interactions
+# 4. Write tests that involve interactions such as click or entering text
 
 ## Introduction
 
@@ -9,6 +9,7 @@ user.
 
 For example take the following user story:
 
+```text
 As a student, I want to see a chart showing the number of male, female and total participants per year, so that I can
 analyze the participation trends athletes by gender.
 
@@ -17,6 +18,7 @@ Acceptance Criteria:
 - Display a bar chart showing the number of male, female and total participants for each year.
 - Allow filtering by Summer or Winter games.
 - Provide tooltips with detailed information when hovering over data points.
+```
 
 To test this fully might require that we:
 
@@ -39,7 +41,7 @@ For example, to complete and submit a form with a first-name field:
 from selenium.webdriver.common.by import By
 
 # Find the element
-firt_name = driver.find_element(By.name, "first-name")
+first_name = driver.find_element(By.name, "first-name")
 # Enter the text "Charles"
 first_name.send_keys("Charles")
 # Fina and click on the form submit button
@@ -67,8 +69,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-# Implicit wait
-# Wait for 2 seconds
+# Implicit wait for 2 seconds
 driver.implicitly_wait(2)
 
 # Wait for 10 seconds until the element with ID of "myElement" is present on the web page
@@ -105,13 +106,16 @@ The Dash API also offers the following wait functions:
 You can also use other Python libraries to introduce a wait, e.g. `time.sleep(2)` would halt the test from running for 2
 seconds. This can be useful if you want to wait before the driver has been initialised.
 
-## Write a test: test that when you click on a checkbox that the bar chart updates
-
+## Writing the tests
+### Write a test that when you click on a checkbox that the bar chart updates
+The test specification is:
+```text
 GIVEN the app is loaded
 AND a checkbox is present on the page
-AND a bar chart is displayed on the pahe
+AND a bar chart is displayed on the page
 WHEN the checkbox selection is changed
 THEN the chart should be updated
+```
 
 You will need to decide how to assert that the chart has updated. For example, check the number and ids of the chart
 elements in the column that contains the bar charts.
@@ -121,7 +125,7 @@ then a second chart should be in the div.
 
 One possible structure for the test:
 
-```plain text
+```python
 def test_bar_chart_updates(dash_duo):
     """
     GIVEN the app is running
@@ -135,22 +139,25 @@ def test_bar_chart_updates(dash_duo):
     dash_duo.start_server(app)
 
     # Wait until the checkbox element is displayed
-    
+
     # Find div with the id 'bar-div' that contains the charts
-    
+
     # count the number of elements in bar_div with the class 'dash-graph'
 
     # Select the 'Winter' checkbox. Summer is already selected by default.
-    
-    # Click the checkbox
-    
-    # Wait 2 seconds for the bar chart to update
-    
-    # Find div with the id 'bar-div' that contains the charts again
-    
-    # count the number of elements in bar_div with the class 'dash-graph'
 
-   # There should be 2 charts now and 1 at the start so you can assert that num_charts_after > num_charts_before
+    # Click the checkbox
+
+    # Wait 2 seconds for the bar chart to update
+
+    # Find div with the id 'bar-div' that contains the charts again
+
+    # count the number of elements in bar_div with the class 'dash-graph'
+    
+    # There should be 2 charts now and 1 at the start so you can assert that num_charts_after > num_charts_before
+
 ```
 
 Implement the code and run the test.
+
+[Next activity](4-5-complex-selector.md)

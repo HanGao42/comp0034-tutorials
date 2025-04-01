@@ -1,13 +1,6 @@
-# Test that the Dash app loads
+# 2. Configure the webdriver, run the app and write a test to verify that the app is running
 
-This first activity tests that you can reach the main page of Dash app (and in the case of a single page app there is
-only one page!).
-
-## Check the Dash app runs
-
-1. `python src/student/dash_single/paralympics_dash.py`
-2. Go to the URL that is shown in the terminal. By default, this is <http://127.0.0.1:8050>.
-3. Stop the app using `CTRL+C`
+This activity tests that you can reach the main page of Dash app (in a single page app there is only one page!).
 
 ## Configure the selenium webdriver for chrome
 
@@ -27,8 +20,8 @@ However, if you want to run the tests on your computer and see what is happening
 also need to have the browser set large enough that it can find elements of your page. A good starting point is to
 maximise the browser window.
 
-The following code handles this for you, it will detect if its being run on GitHub Actions and if so will so 'headless',
-otherwise it will run in a maximised browser window.
+The following code handles this for you, it will detect if its being run on GitHub Actions and if so will set 
+"headless" mode, otherwise it will run in a maximised browser window.
 
 ```python
 import os
@@ -121,7 +114,7 @@ from dash.testing.application_runners import import_app
 def test_server_live(dash_duo):
     """
     GIVEN the app is running
-    WHEN a HTTP request to the home page is made
+    WHEN an HTTP request to the home page is made
     THEN the HTTP response status code should be 200
     """
 
@@ -136,7 +129,7 @@ def test_server_live(dash_duo):
     # You can print this to see what it is e.g. print(f'The server url is {url}')
     url = dash_duo.driver.current_url
 
-    # Requests is a python library and here is used to make a HTTP request to the sever url
+    # Requests is a python library and here is used to make an HTTP request to the sever url
     response = requests.get(url)
 
     # Finally, use the pytest assertion to check that the status code in the HTTP response is 200
@@ -145,4 +138,4 @@ def test_server_live(dash_duo):
 
 Run the test e.g. `pytest -v` in a terminal, or use a run test function in your IDE.
 
-[Next activity](4-2-locate-elements.md)
+[Next activity](4-3-locate-elements.md)

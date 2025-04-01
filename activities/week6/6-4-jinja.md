@@ -2,7 +2,7 @@
 
 ## Jinja references
 
-You may find the following references useful during this activity:
+The following references may be useful during this activity:
 
 - [Jinja template designer documentation](https://jinja.palletsprojects.com/en/stable/templates/)
 - [Flask tutorial on templates](https://flask.palletsprojects.com/en/stable/tutorial/templates/)
@@ -11,20 +11,22 @@ You may find the following references useful during this activity:
 
 ## Overview of Jinja
 
-Jinja is a template engine. You commonly use template engines for web page templates that receive dynamic content from
+### Syntax
+
+Jinja is a template engine. You commonly use templates for web pages that receive dynamic content from
 the back end, in this case the Flask application, and render it as a static page in the front end (web browser).
 
 Jinja allows you to add elements to your page that will be generated from Python code.
 
-Jinja templates can be HTML files that have Jinja syntax in places. The types of Jinja syntax you may want to use are:
+Jinja templates can be HTML files that include Jinja syntax in them. The types of Jinja syntax you may want to use are:
 
-- `{% ... %}`  for statements such as 'block' and 'extend'; control structures 'for' and 'if'; and macros.
+- `{% ... %}` for statements such as `block` and `extends`; control structures `for` and `if`; and
+  macros. [Macros](https://jinja.palletsprojects.com/en/3.1.x/templates/#macros) can be used to write reusable
+  functions.
 - `{{ ... }}` for expressions and variables
 - `{# ... #}` for comments
 
-[Macros](https://jinja.palletsprojects.com/en/3.1.x/templates/#macros) can be used to write reusable functions.
-
-Some examples of common statements:
+Some examples of the syntax:
 
 ```jinja
 {# To inherit all the layout from another template, in this case 'layout.html' #}
@@ -35,24 +37,34 @@ Some examples of common statements:
     {# Here is where the dynamic contents will appear #}
 {% endblock %}
 
-{# For #}
+{# For loop #}
 {% for user in users %} 
 	<p>{{ user.username|e }}</p> 
 {% endfor %}
 ```
 
+### Template inheritance
+
 Jinja provides template inheritance. "Template inheritance allows you to build a base “skeleton” template that contains
-all the common elements of your site and defines blocks that child templates can override." In practical terms, in your
-Flask app you will create a parent template that contains the default HTML page structure, the CSS, etc. and then child
-templates inherit this and apply any specific changes for certain type of page. If you then need to change the overall
-structure (e.g. a menu/nav bar) or a CSS stylesheet, you only need to do so in one place in the parent template.
+all the common elements of your site and defines blocks that child templates can override."
 
-In Flask, Jinja is configured to autoescape any data that is rendered in HTML templates. This means that it’s safe to
-render user input; any characters they’ve entered that could mess with the HTML, such as < and > will be escaped with safe values that look
-the same in the browser but don’t cause unwanted effects. This will be important if you plan to allow users to input
-text in some way in your application as it prevents them entering HTML script that could harm your application.
+In practical terms, in your Flask app you will create a parent template that contains the default HTML page structure, 
+the CSS, etc. and then child templates inherit this and apply any specific changes for certain type of page.
 
-## 1. Create a "parent" template that is the base page layout
+If you then need to change the overall structure, e.g. a menu/nav bar or a CSS stylesheet, you only need to do so in 
+one place, i.e. in the parent template.
+
+### Escaping user input
+
+In Flask, Jinja is configured to auto-escape any data that is rendered in HTML templates. This means that it’s safe to
+render user input; any characters they’ve entered that could mess with the HTML, such as < and > will be escaped with
+safe values that look the same in the browser but don’t cause unwanted effects. This will be important if you plan to
+allow users to input text in some way in your application as it prevents them entering HTML script that could harm your
+application.
+
+## Create Jinja templates for the Paralympics app
+
+### 1. Create a "parent" template that is the base page layout
 
 This template will provide all the common elements of your web pages such as:
 
@@ -71,7 +83,8 @@ Create an empty file called `navbar.html` in the templates folder. You will edit
 The code includes the Bootstrap CSS and denotes sections that will be provided by 'child' templates:
 
 - a **block** called `head` that will allow child templates to add to this if needed
-- a **block** called `title` that allows child templates to set their own page title and inherits the overall website name
+- a **block** called `title` that allows child templates to set their own page title and inherits the overall website
+  name
 - an **include** that uses the contents of `navbar.html` to generate a navbar
 - a **block** called content that will have the main page contents
 
@@ -104,11 +117,12 @@ these indents!
 </html>
 ```
 
-## 2. Add Bootstrap navbar code to navbar.html
+### 2. Add Bootstrap navbar code to navbar.html
 
-Create a basic Bootstrap navbar and save the code to the `navbar.html` template. 
+Create a basic Bootstrap navbar and save the code to the `navbar.html` template.
 
-This file should contain just the HTML needed for a [Bootstrap styled navigation bar](https://getbootstrap.com/docs/5.3/components/navbar/).
+This file should contain just the HTML needed for
+a [Bootstrap styled navigation bar](https://getbootstrap.com/docs/5.3/components/navbar/).
 
 The code for the homepage link uses Jinja syntax to use the flask `url_for()` function to generate the link to the home
 page of our app. The homepage route, '/', has the function name of 'index' in `paralympics_app.py`.
@@ -117,6 +131,7 @@ Links 1 and 2 do not currently have any pages to link to so will remain on the s
 the '#' symbol.
 
 ```html
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Paralympics</a>
@@ -141,7 +156,9 @@ the '#' symbol.
 </nav>
 ```
 
-## 3. Modify `index.html` to inherit the parent template
+### 3. Create an `index.html` to inherit the parent template
+
+`index.html` ia the name we will give to the home page template for the "/" route in the Paralympics app.
 
 `index.html` inherits from `base.html` (or whatever name you saved it as) so all you need to provide is the values for
 the **block**s.
@@ -161,10 +178,14 @@ Replace all the current contents of `index.html` with just the following:
 {% endblock %}
 ```
 
-## 4. Run the Flask app
+### 4. Modify the route to call the template
+
+Modify `routes.py` so the "/" returns `render_template('index.html')`.
+
+### 5. Run the Flask app
 
 Run the Flask app e.g. `flask --app student.paralympics_flask run --debug`
 
-You should a page with a nav bar.
+You should see a page with a nav bar that follows Bootstrap styling.
 
 [Next activity](6-5-variable-routes.md)

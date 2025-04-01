@@ -1,4 +1,4 @@
-# Testing from the web browser
+# 1. Intro to testing a Dash app from the Chrome web browser
 
 ## Introduction
 
@@ -20,28 +20,29 @@ carrying out specific actions in the browser and then use assertions to verify c
 
 Selenium can be used with several test libraries. pytest is recommended in the Dash and Flask documentation.
 
-ChromeDriver is a utility that runs on your computer and allows the code to run and access the Chrome browser
+[ChromeDriver](https://googlechromelabs.github.io/chrome-for-testing/) is a utility that runs on your computer and
+allows the code to run and access the Chrome browser
 application on your computer. The version you need to use has to match your operating system and the version of the
 Chrome browser you are using.
 
-Dash also supports unit testing of callbacks which will be covered in this tutorial.
+Dash also supports unit testing of callbacks; this is not included in this tutorial.
 
 ## Set up the testing environment
 
 To set up testing in your Python environment you need to:
 
-- install your own code e.g. `pip install -e .` which relies on your `pyproject.toml`
-- install the `pytest` and `selenium` Python packages
-- install the `dash[testing]` utilities. This may be either: `pip install dash[testing]`, or in some Terminal shells (
-  for example, Zsh), you may need to escape the opening bracket, [: `pip install dash\[testing]`
-- install a chrome driver that matches your browser
-- optionally, set up a GitHub Actions workflow to run the tests
+1. Install your own code e.g. `pip install -e .` which relies on your `pyproject.toml`
+2. Install the `pytest` and `selenium` Python packages
+3. Install the `dash[testing]` utilities. This may be either: `pip install dash[testing]`, or in some Terminal shells (
+   for example, Zsh), you may need to escape the opening bracket, [: `pip install dash\[testing]`
+4. Install a chrome driver that matches your browser
+5. Optionally, set up a GitHub Actions workflow to run the tests
 
-The following sections explain each of these.
+Steps 2, 4 and 5 are explained in more detail below.
 
 ### Install selenium and pytest
 
-Install selenium and pytest in your Python project's vitual environment, e.g.: `pip install selenium pytest`
+Install selenium and pytest in your Python project's virtual environment, e.g.: `pip install selenium pytest`
 
 ### Install chromedriver
 
@@ -65,9 +66,9 @@ You may need to refer to the following:
   explains options for
   installation.
 
-Note for mac users: I downloaded the zip, then open in Finder and right-click on the .exe and open in Terminal. This
+Note for Mac users: I downloaded the zip, then open in Finder and right-click on the .exe and open in Terminal. This
 will ask you if you are sure. Once you've opened and run it, stop it running. The permissions to open the file will now
-be set. You can now move the file, e.g. to usr/local/bin is a common location for MacOS.
+be set. You can now move the file, e.g. to usr/local/bin is a common location for macOS.
 
 ## Set up GitHub Actions
 
@@ -77,7 +78,7 @@ the [GitHub documentation](https://docs.github.com/en/actions/automating-builds-
 Go to Actions tab in GitHub Actions and you will see starter workflows. The Python Application starter workflow is close
 to what you need so is a good starting point.
 
-![GitHub Actions starter workflow](gha-workflow.png)
+![GitHub Actions starter workflow](../img/gha-workflow.png)
 
 The GitHub actions environment includes chromedriver and Chrome so you don’t need to explicitly install them.
 
@@ -104,4 +105,4 @@ The general approach is:
 
 The following activities cover these steps.
 
-[Next activity](4-1-test-app-url.md)
+[Next activity](4-2-test-app-url.md)

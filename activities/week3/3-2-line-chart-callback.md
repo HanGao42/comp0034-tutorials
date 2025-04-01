@@ -4,9 +4,12 @@
 
 Before making changes, make sure you have a Dash app that runs, e.g.
 
-1. `python src/student/dash_single/paralympics_dash.py`
+1. Go to `src/student/dash_single/paralympics_dash.py` and run the app.
 2. Go to the URL that is shown in the terminal. By default, this is <http://127.0.0.1:8050>.
-3. Stop the app using `CTRL+C`
+
+If you did not complete the activities in weeks 1 and 2, then you may need to copy and adapt the tutor solution code
+from `src/tutor/dash_single_t` including the Python file containing the charts code (e.g. `figures.py`) as well as the
+latest `paralympics_dash` app code (there are multiple versions of this for different weeks of the activities).
 
 ## Line chart callback
 

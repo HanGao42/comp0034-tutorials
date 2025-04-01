@@ -75,10 +75,10 @@ In the [flask_paralympics](../../src/student/flask_paralympics) directory there 
 
 - `static` contains CSS and JavaScript files. The files in the folders are downloaded
   from [Bootstrap](https://getbootstrap.com). This will be used in activity 6.3.
-- `templates` contains an HTML file. 
+- `templates` contains an HTML file.
 
 Run the app from the Terminal command line in your IDE. This time append "/hello" to the URL e.g.
-`http://127.0.0.1:5000/hello`. 
+`http://127.0.0.1:5000/hello`.
 
 `flask --app src/student/flask_paralympics/minimal_app.py run --debug`
 
@@ -86,17 +86,17 @@ Don't forget to stop the running app using `CTRL+C` in the command line interfac
 
 ## Task: Create a Flask app file for the paralympics app
 
-Create a python file for the paralympics app, e.g. `paralympics_app.py`.
+Create a python file for the paralympics app routes, e.g. `routes.py`. Do not name it `flask.py`, this would conflict
+with the Flask package itself.
 
-You can give the python file any name except for flask.py as calling it `flask.py` would conflict with the Flask package
-itself.
+Add code to create an instance of a Flask app.
 
-Add code to create an instance of a Flask app and add a home page for the route "/".
+Add a home page for the route "/". 
+
+Create the route function. Name it "index()". The route should return a simple line of text, e.g. "Paralympics app".
 
 Make sure you can run and stop the paralympics app.
 
-You should now have 2 routes that return different pages:
-    - http://127.0.0.1:5000
-    - http://127.0.0.1:5000/hello
+Delete the `minimal_app.py` file.
 
 [Next activity](6-2-structure.md)

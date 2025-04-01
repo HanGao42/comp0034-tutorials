@@ -1,12 +1,6 @@
-# Try it yourself
+# 7. Further information
 
-Run the Dash app so that you know what it contains.
-
-Try to identify a few more tests you could write.
-
-Write the tests and try running them.
-
-## Further links
+## Links to other tutorials
 
 [Building unit tests for dash applications](https://plotly.com/blog/building-unit-tests-for-dash-applications/). This
 goes beyond what is expected for the coursework and tests callbacks and uses mocks. Useful if you want to expand your
