@@ -70,7 +70,7 @@ row_one = dbc.Row(
     ], #className="border border-dark rounded p-4 mb-4"
 )
 
-row_two = dbc.Row(
+select_year_areas = dbc.Row(
     [
         dbc.Col(
             children=[
@@ -325,7 +325,7 @@ card = create_card("Barcelona 1992")
 
 app.layout = dbc.Container([
     row_one,
-    row_two,
+    # row_two,
     row_three,
     row_four,
     dcc.Graph(id="line-chart", figure=line_fig),

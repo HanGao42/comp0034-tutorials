@@ -1,14 +1,17 @@
 setuptools
 setuptools-scm
+
 # For the Dash app in weeks 1 to 5
 pandas
 openpyxl
 plotly
 dash
 dash-bootstrap-components
+
 # For the Flask app in weeks 6 to 10
 flask
 flask_sqlalchemy
+
 # For the testing (both apps)
 pytest
 selenium
