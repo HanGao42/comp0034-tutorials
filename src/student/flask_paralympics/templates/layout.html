@@ -1,24 +1,13 @@
-<!-- flask_paralympics/templates/layout.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% block head %}
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-        <title>Paralympics - {% block title %}{% endblock %}</title>
-    {% endblock %}
+    <title>{% block title %}Paralympics App{% endblock %}</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
 </head>
 <body>
-    <header>
-        {% include 'navbar.html' %}
-    </header>
-
-    <div id="content" class="container">
+    {% include 'navbar.html' %}
+    <div class="container mt-4">
         {% block content %}{% endblock %}
     </div>
-
-    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
 </body>
 </html>

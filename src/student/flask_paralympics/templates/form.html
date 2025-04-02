@@ -3,7 +3,7 @@
 {% block title %}输入你的名字{% endblock %}
 
 {% block content %}
-  <form method="POST" action="/welcome">
+  <form method="POST" action="{{ url_for('main.welcome') }}">
     <div class="mb-3">
       <label for="username" class="form-label">你的名字</label>
       <input type="text" class="form-control" id="username" name="username" required>

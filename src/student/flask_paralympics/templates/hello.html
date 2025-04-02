@@ -1,11 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Hello world</title>
-</head>
-<body>
-    <h1>Hello world</h1>
-    <p>This version is generated from a template.</p>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block title %}你好{% endblock %}
+
+{% block content %}
+  <h2>你好 {{ name }} 👋</h2>
+  <p>欢迎来到我们的 Flask 应用！</p>
+{% endblock %}
